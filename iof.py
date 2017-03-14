@@ -18,7 +18,7 @@ def index():
 def temp():
     if request.is_xhr:
         temp = subprocess.check_output(["check_temperature"])
-        if re.match("\d\d.\d\d\d\\n", temp):
+        if re.match(b"\d\d.\d\d\d\\n", temp):
             return json.dumps({"temperature": temp.strip("\n")})
         return json.dumps({"error": "reading_error"})
 
